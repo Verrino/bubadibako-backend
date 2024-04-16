@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Question;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Resources\QuestionResource;
 
 class QuestionController extends Controller
 {
@@ -22,7 +23,29 @@ class QuestionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $exam_id = $request->input('exam_id');
+        $question_text = $request->input('question');
+        $option_1 = $request->input('option_1');
+        $option_2 = $request->input('option_2');
+        $option_3 = $request->input('option_3');
+        $option_4 = $request->input('option_4');
+        $option_5 = $request->input('option_5');
+        $answer = $request->input('answer');
+
+        $question = Question::create([  
+            'exam_id' => $exam_id,
+            'question' => $question_text,
+            'option_1' => $option_1,
+            'option_2' => $option_2,
+            'option_3' => $option_3,
+            'option_4' => $option_4,
+            'option_5' => $option_5,
+            'answer' => $answer,
+        ]);
+
+        return response()->json([
+            'data' => new QuestionResource($question),
+        ], 201 );
     }
 
     /**
@@ -30,7 +53,7 @@ class QuestionController extends Controller
      */
     public function show(Question $question)
     {
-        //
+        return new QuestionResource($question);
     }
 
     /**
@@ -38,7 +61,29 @@ class QuestionController extends Controller
      */
     public function update(Request $request, Question $question)
     {
-        //
+        $exam_id = $request->input('exam_id');
+        $question_text = $request->input('question');
+        $option_1 = $request->input('option_1');
+        $option_2 = $request->input('option_2');
+        $option_3 = $request->input('option_3');
+        $option_4 = $request->input('option_4');
+        $option_5 = $request->input('option_5');
+        $answer = $request->input('answer');
+
+        $question->update([  
+            'exam_id' => $exam_id,
+            'question' => $question_text,
+            'option_1' => $option_1,
+            'option_2' => $option_2,
+            'option_3' => $option_3,
+            'option_4' => $option_4,
+            'option_5' => $option_5,
+            'answer' => $answer,
+        ]);
+
+        return response()->json([
+            'data' => new QuestionResource($question),
+        ], 200 );
     }
 
     /**
@@ -46,6 +91,7 @@ class QuestionController extends Controller
      */
     public function destroy(Question $question)
     {
-        //
+        $question->delete();
+        return response()->json(null,204);
     }
 }

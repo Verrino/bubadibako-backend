@@ -6,6 +6,8 @@ use App\Models\Student;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Resources\StudentResource;
+use Illuminate\Support\Facades\Hash;
 
 class StudentController extends Controller
 {
@@ -14,7 +16,7 @@ class StudentController extends Controller
      */
     public function index()
     {
-        //
+        return Student::all();
     }
 
     /**
@@ -22,7 +24,23 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $classroom_id = $request->input('classroom_id');
+        $student_nisn = $request->input('nisn');
+        $student_name = $request->input('name');
+        $student_password = $request->input('password');
+        $student_gender = $request->input('gender');
+
+        $student = Student::create([
+            'classroom_id' => $classroom_id,
+            'nisn' => $student_nisn,
+            'name' => $student_name,
+            'password' => Hash::make($student_password),
+            'gender' => $student_gender,
+        ]);
+
+        return response()->json([
+            'data' => new StudentResource($student)
+        ], 201);
     }
 
     /**
@@ -30,7 +48,7 @@ class StudentController extends Controller
      */
     public function show(Student $student)
     {
-        //
+        return new StudentResource($student);
     }
 
     /**
@@ -38,7 +56,23 @@ class StudentController extends Controller
      */
     public function update(Request $request, Student $student)
     {
-        //
+        $classroom_id = $request->input('classroom_id');
+        $student_nisn = $request->input('nisn');
+        $student_name = $request->input('name');
+        $student_password = $request->input('password');
+        $student_gender = $request->input('gender');
+
+        $student->update([
+            'classroom_id' => $classroom_id,
+            'nisn' => $student_nisn,
+            'name' => $student_name,
+            'password' => $student_password,
+            'gender' => $student_gender,
+        ]);
+
+        return response()->json([
+            'data' => new StudentResource($student)
+        ], 200);
     }
 
     /**
@@ -46,7 +80,8 @@ class StudentController extends Controller
      */
     public function destroy(Student $student)
     {
-        //
+        $student->delete();
+        return response()->json(null,204);
     }
 
     public function login(Request $request) {

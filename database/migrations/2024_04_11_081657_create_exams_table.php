@@ -20,6 +20,8 @@ return new class extends Migration
             $table->foreign('classroom_id')->references('id')->on('classrooms');
             $table->integer('duration');
             $table->string('description');
+            $table->datetime('start_time');
+            $table->datetime('end_time');
             $table->enum('random_question', ['Y', 'N']);
             $table->enum('random_answer', ['Y', 'N']);
             $table->enum('show_answer', ['Y', 'N']);

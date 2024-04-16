@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Lesson extends Model
 {
     use HasFactory;
+
+    public function exam() 
+    {
+        return $this->hasMany(Exam::class,'lesson_id');
+    }
+
+    protected $fillable = ['title'];
 }
