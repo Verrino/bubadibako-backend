@@ -44,7 +44,7 @@ class ExamController extends Controller
     {
         $title = $request->input('title');
         $lessons_id = $request->input('lesson_id');
-        $classroom_id = $request->input('classrooms_id');
+        $classroom_id = $request->input('classroom_id');
         $duration = $request->input('duration');
         $description = $request->input('description');
         $start_time = $request->input('start_time');
@@ -56,7 +56,7 @@ class ExamController extends Controller
         $exam = Exam::create([  
             'title' => $title,
             'lesson_id' => $lessons_id,
-            'classrooms_id' => $classroom_id,
+            'classroom_id' => $classroom_id,
             'duration' => $duration,
             'description' => $description,
             'start_time' => $start_time,

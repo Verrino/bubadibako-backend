@@ -29,5 +29,5 @@ class Exam extends Model
         return $this->hasMany(Question::class,'exam_id');
     }
 
-    protected $fillable = ['title','lesson_id','classroom_id','duration','description','random_question','random_answer','show_answer'];
+    protected $fillable = ['title','lesson_id','classroom_id','duration','description', 'start_time', 'end_time', 'random_question','random_answer','show_answer'];
 }

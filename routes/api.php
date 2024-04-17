@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ClassroomController;
 use App\Http\Controllers\ExamController;
 use App\Http\Controllers\GradeController;
+use App\Http\Controllers\LessonController;
+use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\StudentController;
 
 Route::get('/user', function (Request $request) {
@@ -44,12 +46,11 @@ Route::delete('exams/{exam}',[ExamController::class,'destroy'])->name('exams.des
 Route::get('/exams/{classroom_id}/{student_id}', [ExamController::class, 'index']);
 
 //questions
-Route::get('questions',[QuestionController::class,'index'])->name('questions.index');
+Route::get('/get-questions/{exam_id}', [QuestionController::class, 'index']);
 Route::get('questions/{question}',[QuestionController::class,'show'])->name('questions.show');
 Route::post('questions',[QuestionController::class,'store'])->name('questions.store');
 Route::put('questions/{question}',[QuestionController::class,'update'])->name('questions.update');
 Route::delete('questions/{question}',[QuestionController::class,'destroy'])->name('questions.destroy');
-Route::get('/questions/{exam_id}', [QuestionController::class, 'index']);
 
 //grades
 Route::get('grades',[GradeController::class,'index'])->name('grades.index');
