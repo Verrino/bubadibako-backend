@@ -64,7 +64,6 @@ class ExamController extends Controller
             'random_question' => $random_question,
             'random_answer' => $random_answer,
             'show_answer' => $show_answer,
-           
         ]);
 
         return response()->json([

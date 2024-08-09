@@ -5,9 +5,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ClassroomController;
 use App\Http\Controllers\ExamController;
 use App\Http\Controllers\GradeController;
+use App\Http\Controllers\StudentController;
 use App\Http\Controllers\LessonController;
 use App\Http\Controllers\QuestionController;
-use App\Http\Controllers\StudentController;
 
 Route::get('/user', function (Request $request) {
     return $request->user();

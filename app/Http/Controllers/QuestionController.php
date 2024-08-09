@@ -15,7 +15,6 @@ class QuestionController extends Controller
     public function index(String $exam_id)
     {
         $questions = Question::where('exam_id', $exam_id)->get();
-        
         return response()->json(['questions' => $questions], 200);
     }
 
