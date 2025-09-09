@@ -13,6 +13,7 @@ Deskripsi: Mengambil semua data kelas.
 
 Contoh Response Sukses (200 OK):
 
+```json
 [
   {
     "id": 1,
@@ -27,6 +28,7 @@ Contoh Response Sukses (200 OK):
     "updated_at": "2023-10-27T04:13:00.000000Z"
   }
 ]
+```
 
 2. Get Classroom by ID
 Method: GET
@@ -37,12 +39,14 @@ Deskripsi: Mengambil data kelas berdasarkan ID.
 
 Contoh Response Sukses (200 OK):
 
+```json
 {
   "data": {
     "id": 1,
     "title": "Kelas 10A"
   }
 }
+```
 
 3. Create Classroom
 Method: POST
@@ -53,18 +57,11 @@ Deskripsi: Membuat kelas baru.
 
 Request Body:
 
+```json
 {
   "title": "Kelas 12C"
 }
-
-Contoh Response Sukses (201 Created):
-
-{
-  "data": {
-    "id": 3,
-    "title": "Kelas 12C"
-  }
-}
+```
 
 4. Update Classroom
 Method: PUT
@@ -75,18 +72,11 @@ Deskripsi: Memperbarui data kelas.
 
 Request Body:
 
+```json
 {
   "title": "Kelas 12-C IPA"
 }
-
-Contoh Response Sukses (200 OK):
-
-{
-  "data": {
-    "id": 3,
-    "title": "Kelas 12-C IPA"
-  }
-}
+```
 
 5. Delete Classroom
 Method: DELETE
@@ -94,10 +84,6 @@ Method: DELETE
 Endpoint: /api/classrooms/{id}
 
 Deskripsi: Menghapus data kelas.
-
-Contoh Response Sukses (204 No Content):
-
-Tidak ada body response.
 
 Lessons
 Endpoint untuk mengelola data mata pelajaran.
@@ -123,12 +109,6 @@ Endpoint: /api/lesson/{lesson_id}
 
 Deskripsi: Mengambil judul mata pelajaran berdasarkan ID.
 
-Contoh Response Sukses (200 OK):
-
-{
-    "lesson_name": "Matematika"
-}
-
 4. Create Lesson
 Method: POST
 
@@ -138,9 +118,11 @@ Deskripsi: Membuat mata pelajaran baru.
 
 Request Body:
 
+```json
 {
   "title": "Biologi"
 }
+```
 
 5. Update Lesson
 Method: PUT
@@ -151,9 +133,11 @@ Deskripsi: Memperbarui data mata pelajaran.
 
 Request Body:
 
+```json
 {
   "title": "Biologi Lanjutan"
 }
+```
 
 6. Delete Lesson
 Method: DELETE
@@ -174,6 +158,7 @@ Deskripsi: Mengambil daftar ujian yang tersedia untuk seorang siswa di kelas ter
 
 Contoh Response Sukses (200 OK):
 
+```json
 {
   "exams": [
     {
@@ -188,6 +173,7 @@ Contoh Response Sukses (200 OK):
     }
   ]
 }
+```
 
 2. Get Exam by ID
 Method: GET
@@ -205,6 +191,7 @@ Deskripsi: Membuat ujian baru.
 
 Request Body:
 
+```json
 {
   "title": "Ujian Akhir Semester",
   "lesson_id": 1,
@@ -217,6 +204,7 @@ Request Body:
   "random_answer": true,
   "show_answer": false
 }
+```
 
 4. Update Exam
 Method: PUT
@@ -243,6 +231,7 @@ Deskripsi: Mengirimkan jawaban ujian oleh siswa.
 
 Request Body:
 
+```json
 {
   "student_id": 1,
   "exam_id": 1,
@@ -250,26 +239,12 @@ Request Body:
   "start_time": "2023-11-01 08:05:10",
   "end_time": "2023-11-01 09:00:10",
   "answers": {
-    "1_1": "Jawaban A",
-    "2_1": "Jawaban C",
-    "3_1": "Jawaban B"
+    "1_1": 1,
+    "2_1": 3,
+    "3_1": 2
   }
 }
-
-Contoh Response Sukses (200 OK):
-
-{
-  "grade": {
-      "student_id": 1,
-      "exam_id": 1,
-      "duration": 55,
-      "start_time": "2023-11-01 08:05:10",
-      "end_time": "2023-11-01 09:00:10",
-      "total_correct": 25,
-      "grade": 83.33,
-      "id": 12
-  }
-}
+```
 
 Questions
 Endpoint untuk mengelola data pertanyaan.
@@ -283,6 +258,7 @@ Deskripsi: Mengambil semua pertanyaan untuk ujian tertentu.
 
 Contoh Response Sukses (200 OK):
 
+```json
 {
   "questions": [
     {
@@ -298,6 +274,7 @@ Contoh Response Sukses (200 OK):
     }
   ]
 }
+```
 
 2. Get Question by ID
 Method: GET
@@ -315,6 +292,7 @@ Deskripsi: Membuat pertanyaan baru untuk sebuah ujian.
 
 Request Body:
 
+```json
 {
   "exam_id": 1,
   "question": "2 + 2 = ?",
@@ -325,6 +303,7 @@ Request Body:
   "option_5": "5",
   "answer": 4
 }
+```
 
 4. Update Question
 Method: PUT
@@ -368,6 +347,7 @@ Deskripsi: Menyimpan data nilai baru.
 
 Request Body:
 
+```json
 {
   "exam_id": 1,
   "student_id": 1,
@@ -377,6 +357,7 @@ Request Body:
   "total_correct": 28,
   "grade": 93.33
 }
+```
 
 4. Update Grade
 Method: PUT
@@ -403,17 +384,12 @@ Deskripsi: Mendapatkan nama kelas dan mata pelajaran berdasarkan ID.
 
 Request Body:
 
+```json
 {
     "classroom_id": 1,
     "lesson_id": 1
 }
-
-Contoh Response Sukses (200 OK):
-
-{
-    "classroom": "Kelas 10A",
-    "lesson": "Matematika"
-}
+```
 
 Students
 Endpoint untuk mengelola data siswa.
@@ -437,6 +413,7 @@ Deskripsi: Mendaftarkan siswa baru. Password akan di-hash secara otomatis.
 
 Request Body:
 
+```json
 {
     "classroom_id": 1,
     "nisn": "1234567890",
@@ -444,6 +421,7 @@ Request Body:
     "password": "password123",
     "gender": "Laki-laki"
 }
+```
 
 4. Update Student
 Method: PUT
@@ -454,6 +432,7 @@ Deskripsi: Memperbarui data siswa.
 
 Request Body:
 
+```json
 {
     "classroom_id": 1,
     "nisn": "1234567890",
@@ -461,6 +440,7 @@ Request Body:
     "password": "passwordBaru123",
     "gender": "Laki-laki"
 }
+```
 
 5. Delete Student
 Method: DELETE
@@ -487,6 +467,7 @@ Endpoint: /api/answers
 
 Request Body:
 
+```json
 {
     "exams_id": 1,
     "exam_sessions_id": 1,
@@ -494,9 +475,10 @@ Request Body:
     "students_id": 1,
     "question_order": 1,
     "answer_order": 3,
-    "answer": "Jawaban C",
+    "answer": 3,
     "is_correct": false
 }
+```
 
 4. Update Answer
 Method: PUT
@@ -528,12 +510,14 @@ Endpoint: /api/exam-sessions
 
 Request Body:
 
+```json
 {
     "title": "Sesi Pagi",
     "exams_id": 1,
     "start_time": "2023-12-10T08:00:00",
     "end_time": "2023-12-10T10:00:00"
 }
+```
 
 4. Update Exam Session
 Method: PUT
@@ -565,11 +549,13 @@ Endpoint: /api/exam-groups
 
 Request Body:
 
+```json
 {
     "exams_id": 1,
     "exam_sessions_id": 1,
     "students_id": 123
 }
+```
 
 4. Update Exam Group
 Method: PUT
@@ -591,34 +577,9 @@ Deskripsi: Endpoint untuk login siswa menggunakan NISN dan password.
 
 Request Body:
 
+```json
 {
     "nisn": "1234567890",
     "password": "password123"
 }
-
-Contoh Response Sukses (200 OK):
-
-{
-    "message": "success",
-    "student": {
-        "id": 1,
-        "classroom_id": 1,
-        "nisn": "1234567890",
-        "name": "John Doe",
-        "gender": "Laki-laki",
-        "created_at": "2023-11-01T00:00:00.000000Z",
-        "updated_at": "2023-11-01T00:00:00.000000Z"
-    }
-}
-
-Contoh Response Gagal (404 Not Found):
-
-{
-    "message": "nisn tidak ditemukan"
-}
-
-Contoh Response Gagal (401 Unauthorized):
-
-{
-    "message": "password gagal"
-}
+```
