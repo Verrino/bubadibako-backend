@@ -35,7 +35,7 @@ Route::get('students/{student}', [StudentController::class, 'show'])->name('stud
 Route::post('students', [StudentController::class, 'store'])->name('students.store');
 Route::put('students/{student}', [StudentController::class, 'update'])->name('students.update');
 Route::delete('students/{student}', [StudentController::class, 'destroy'])->name('students.destroy');
-Route::post('/submit_exam', [ExamController::class, 'kumpulUjian']);
+Route::post('/submit-exam', [ExamController::class, 'kumpulUjian']);
 
 //exams
 Route::get('exams',[ExamController::class,'index'])->name('exams.index');
@@ -58,4 +58,4 @@ Route::get('grades/{grade}',[GradeController::class,'show'])->name('grades.show'
 Route::post('grades',[GradeController::class,'store'])->name('grades.store');
 Route::put('grades/{grade}',[GradeController::class,'update'])->name('grades.update');
 Route::delete('grades/{grade}',[GradeController::class,'destroy'])->name('grades.destroy');
-Route::post('/get_identity', [GradeController::class, 'index']);
+Route::post('/get-identity', [GradeController::class, 'getIdentity'])->name('grades.getIdentity');

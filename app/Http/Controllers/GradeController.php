@@ -14,14 +14,9 @@ class GradeController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(Request $request)
+    public function index()
     {
-        $jsonData = $request->json()->all();
-
-        $classroom = Classroom::find($jsonData['classroom_id']);
-        $lesson = Lesson::find($jsonData['lesson_id']);
-
-        return response()->json(['classroom' => $classroom->title, 'lesson' => $lesson->title], 200);
+        return Grade::all();
     }
 
     /**
@@ -95,5 +90,15 @@ class GradeController extends Controller
     {
         $grade->delete();
         return response()->json(null,204);
+    }
+
+    public function getIdentity(Request $request)
+    {
+        $jsonData = $request->json()->all();
+
+        $classroom = Classroom::find($jsonData['classroom_id']);
+        $lesson = Lesson::find($jsonData['lesson_id']);
+
+        return response()->json(['classroom' => $classroom->title, 'lesson' => $lesson->title], 200);
     }
 }

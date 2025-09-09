@@ -1,66 +1,624 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+Dokumentasi API
+Dokumentasi ini menyediakan detail tentang endpoint REST API yang tersedia.
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Classrooms
+Endpoint untuk mengelola data kelas.
 
-## About Laravel
+1. Get All Classrooms
+Method: GET
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Endpoint: /api/classrooms
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Deskripsi: Mengambil semua data kelas.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Contoh Response Sukses (200 OK):
 
-## Learning Laravel
+[
+  {
+    "id": 1,
+    "title": "Kelas 10A",
+    "created_at": "2023-10-27T04:12:47.000000Z",
+    "updated_at": "2023-10-27T04:12:47.000000Z"
+  },
+  {
+    "id": 2,
+    "title": "Kelas 11B",
+    "created_at": "2023-10-27T04:13:00.000000Z",
+    "updated_at": "2023-10-27T04:13:00.000000Z"
+  }
+]
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+2. Get Classroom by ID
+Method: GET
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+Endpoint: /api/classrooms/{id}
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Deskripsi: Mengambil data kelas berdasarkan ID.
 
-## Laravel Sponsors
+Contoh Response Sukses (200 OK):
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+{
+  "data": {
+    "id": 1,
+    "title": "Kelas 10A"
+  }
+}
 
-### Premium Partners
+3. Create Classroom
+Method: POST
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+Endpoint: /api/classrooms
 
-## Contributing
+Deskripsi: Membuat kelas baru.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Request Body:
 
-## Code of Conduct
+{
+  "title": "Kelas 12C"
+}
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Contoh Response Sukses (201 Created):
 
-## Security Vulnerabilities
+{
+  "data": {
+    "id": 3,
+    "title": "Kelas 12C"
+  }
+}
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+4. Update Classroom
+Method: PUT
 
-## License
+Endpoint: /api/classrooms/{id}
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Deskripsi: Memperbarui data kelas.
+
+Request Body:
+
+{
+  "title": "Kelas 12-C IPA"
+}
+
+Contoh Response Sukses (200 OK):
+
+{
+  "data": {
+    "id": 3,
+    "title": "Kelas 12-C IPA"
+  }
+}
+
+5. Delete Classroom
+Method: DELETE
+
+Endpoint: /api/classrooms/{id}
+
+Deskripsi: Menghapus data kelas.
+
+Contoh Response Sukses (204 No Content):
+
+Tidak ada body response.
+
+Lessons
+Endpoint untuk mengelola data mata pelajaran.
+
+1. Get All Lessons
+Method: GET
+
+Endpoint: /api/lessons
+
+Deskripsi: Mengambil semua data mata pelajaran.
+
+2. Get Lesson by ID
+Method: GET
+
+Endpoint: /api/lessons/{id}
+
+Deskripsi: Mengambil data mata pelajaran berdasarkan ID.
+
+3. Get Lesson Title by ID
+Method: GET
+
+Endpoint: /api/lesson/{lesson_id}
+
+Deskripsi: Mengambil judul mata pelajaran berdasarkan ID.
+
+Contoh Response Sukses (200 OK):
+
+{
+    "lesson_name": "Matematika"
+}
+
+4. Create Lesson
+Method: POST
+
+Endpoint: /api/lessons
+
+Deskripsi: Membuat mata pelajaran baru.
+
+Request Body:
+
+{
+  "title": "Biologi"
+}
+
+5. Update Lesson
+Method: PUT
+
+Endpoint: /api/lessons/{id}
+
+Deskripsi: Memperbarui data mata pelajaran.
+
+Request Body:
+
+{
+  "title": "Biologi Lanjutan"
+}
+
+6. Delete Lesson
+Method: DELETE
+
+Endpoint: /api/lessons/{id}
+
+Deskripsi: Menghapus data mata pelajaran.
+
+Exams
+Endpoint untuk mengelola data ujian.
+
+1. Get Exams by Classroom and Student
+Method: GET
+
+Endpoint: /api/exams/{classroom_id}/{student_id}
+
+Deskripsi: Mengambil daftar ujian yang tersedia untuk seorang siswa di kelas tertentu, yang belum dikerjakan dan masih dalam rentang waktu pengerjaan.
+
+Contoh Response Sukses (200 OK):
+
+{
+  "exams": [
+    {
+      "id": 1,
+      "title": "Ujian Tengah Semester - Matematika",
+      "lesson_id": 1,
+      "classroom_id": 1,
+      "duration": 60,
+      "description": "Ujian mencakup bab 1 sampai 3.",
+      "start_time": "2023-11-01 08:00:00",
+      "end_time": "2023-11-01 10:00:00"
+    }
+  ]
+}
+
+2. Get Exam by ID
+Method: GET
+
+Endpoint: /api/exams/{id}
+
+Deskripsi: Mengambil detail data ujian berdasarkan ID.
+
+3. Create Exam
+Method: POST
+
+Endpoint: /api/exams
+
+Deskripsi: Membuat ujian baru.
+
+Request Body:
+
+{
+  "title": "Ujian Akhir Semester",
+  "lesson_id": 1,
+  "classroom_id": 1,
+  "duration": 120,
+  "description": "Ujian mencakup semua materi semester ini.",
+  "start_time": "2023-12-10T08:00:00",
+  "end_time": "2023-12-10T10:00:00",
+  "random_question": true,
+  "random_answer": true,
+  "show_answer": false
+}
+
+4. Update Exam
+Method: PUT
+
+Endpoint: /api/exams/{id}
+
+Deskripsi: Memperbarui data ujian.
+
+Request Body: (Sama seperti Create Exam)
+
+5. Delete Exam
+Method: DELETE
+
+Endpoint: /api/exams/{id}
+
+Deskripsi: Menghapus data ujian.
+
+6. Submit Exam
+Method: POST
+
+Endpoint: /api/submit-exam
+
+Deskripsi: Mengirimkan jawaban ujian oleh siswa.
+
+Request Body:
+
+{
+  "student_id": 1,
+  "exam_id": 1,
+  "duration": 55,
+  "start_time": "2023-11-01 08:05:10",
+  "end_time": "2023-11-01 09:00:10",
+  "answers": {
+    "1_1": "Jawaban A",
+    "2_1": "Jawaban C",
+    "3_1": "Jawaban B"
+  }
+}
+
+Contoh Response Sukses (200 OK):
+
+{
+  "grade": {
+      "student_id": 1,
+      "exam_id": 1,
+      "duration": 55,
+      "start_time": "2023-11-01 08:05:10",
+      "end_time": "2023-11-01 09:00:10",
+      "total_correct": 25,
+      "grade": 83.33,
+      "id": 12
+  }
+}
+
+Questions
+Endpoint untuk mengelola data pertanyaan.
+
+1. Get Questions by Exam ID
+Method: GET
+
+Endpoint: /api/get-questions/{exam_id}
+
+Deskripsi: Mengambil semua pertanyaan untuk ujian tertentu.
+
+Contoh Response Sukses (200 OK):
+
+{
+  "questions": [
+    {
+      "id": 1,
+      "exam_id": 1,
+      "question": "Siapakah penemu bola lampu?",
+      "option_1": "Thomas Edison",
+      "option_2": "Albert Einstein",
+      "option_3": "Isaac Newton",
+      "option_4": "Nikola Tesla",
+      "option_5": "Galileo Galilei",
+      "answer": 1
+    }
+  ]
+}
+
+2. Get Question by ID
+Method: GET
+
+Endpoint: /api/questions/{id}
+
+Deskripsi: Mengambil detail pertanyaan berdasarkan ID.
+
+3. Create Question
+Method: POST
+
+Endpoint: /api/questions
+
+Deskripsi: Membuat pertanyaan baru untuk sebuah ujian.
+
+Request Body:
+
+{
+  "exam_id": 1,
+  "question": "2 + 2 = ?",
+  "option_1": "1",
+  "option_2": "2",
+  "option_3": "3",
+  "option_4": "4",
+  "option_5": "5",
+  "answer": 4
+}
+
+4. Update Question
+Method: PUT
+
+Endpoint: /api/questions/{id}
+
+Deskripsi: Memperbarui data pertanyaan.
+
+Request Body: (Sama seperti Create Question)
+
+5. Delete Question
+Method: DELETE
+
+Endpoint: /api/questions/{id}
+
+Deskripsi: Menghapus data pertanyaan.
+
+Grades
+Endpoint untuk mengelola data nilai.
+
+1. Get All Grades
+Method: GET
+
+Endpoint: /api/grades
+
+Deskripsi: Mengambil semua data nilai.
+
+2. Get Grade by ID
+Method: GET
+
+Endpoint: /api/grades/{id}
+
+Deskripsi: Mengambil detail nilai berdasarkan ID.
+
+3. Create Grade
+Method: POST
+
+Endpoint: /api/grades
+
+Deskripsi: Menyimpan data nilai baru.
+
+Request Body:
+
+{
+  "exam_id": 1,
+  "student_id": 1,
+  "duration": 58,
+  "start_time": "2023-11-01T08:00:00",
+  "end_time": "2023-11-01T08:58:00",
+  "total_correct": 28,
+  "grade": 93.33
+}
+
+4. Update Grade
+Method: PUT
+
+Endpoint: /api/grades/{id}
+
+Deskripsi: Memperbarui data nilai.
+
+Request Body: (Sama seperti Create Grade)
+
+5. Delete Grade
+Method: DELETE
+
+Endpoint: /api/grades/{id}
+
+Deskripsi: Menghapus data nilai.
+
+6. Get Identity (Classroom & Lesson)
+Method: POST
+
+Endpoint: /api/get-identity
+
+Deskripsi: Mendapatkan nama kelas dan mata pelajaran berdasarkan ID.
+
+Request Body:
+
+{
+    "classroom_id": 1,
+    "lesson_id": 1
+}
+
+Contoh Response Sukses (200 OK):
+
+{
+    "classroom": "Kelas 10A",
+    "lesson": "Matematika"
+}
+
+Students
+Endpoint untuk mengelola data siswa.
+
+1. Get All Students
+Method: GET
+
+Endpoint: /api/students
+
+2. Get Student by ID
+Method: GET
+
+Endpoint: /api/students/{id}
+
+3. Create Student
+Method: POST
+
+Endpoint: /api/students
+
+Deskripsi: Mendaftarkan siswa baru. Password akan di-hash secara otomatis.
+
+Request Body:
+
+{
+    "classroom_id": 1,
+    "nisn": "1234567890",
+    "name": "Budi Hartono",
+    "password": "password123",
+    "gender": "Laki-laki"
+}
+
+4. Update Student
+Method: PUT
+
+Endpoint: /api/students/{id}
+
+Deskripsi: Memperbarui data siswa.
+
+Request Body:
+
+{
+    "classroom_id": 1,
+    "nisn": "1234567890",
+    "name": "Budi Hartono Putra",
+    "password": "passwordBaru123",
+    "gender": "Laki-laki"
+}
+
+5. Delete Student
+Method: DELETE
+
+Endpoint: /api/students/{id}
+
+Answers
+Endpoint untuk mengelola jawaban per siswa per soal.
+
+1. Get All Answers
+Method: GET
+
+Endpoint: /api/answers
+
+2. Get Answer by ID
+Method: GET
+
+Endpoint: /api/answers/{id}
+
+3. Create Answer
+Method: POST
+
+Endpoint: /api/answers
+
+Request Body:
+
+{
+    "exams_id": 1,
+    "exam_sessions_id": 1,
+    "questions_id": 1,
+    "students_id": 1,
+    "question_order": 1,
+    "answer_order": 3,
+    "answer": "Jawaban C",
+    "is_correct": false
+}
+
+4. Update Answer
+Method: PUT
+
+Endpoint: /api/answers/{id}
+
+5. Delete Answer
+Method: DELETE
+
+Endpoint: /api/answers/{id}
+
+Exam Sessions
+Endpoint untuk mengelola sesi ujian.
+
+1. Get All Exam Sessions
+Method: GET
+
+Endpoint: /api/exam-sessions
+
+2. Get Exam Session by ID
+Method: GET
+
+Endpoint: /api/exam-sessions/{id}
+
+3. Create Exam Session
+Method: POST
+
+Endpoint: /api/exam-sessions
+
+Request Body:
+
+{
+    "title": "Sesi Pagi",
+    "exams_id": 1,
+    "start_time": "2023-12-10T08:00:00",
+    "end_time": "2023-12-10T10:00:00"
+}
+
+4. Update Exam Session
+Method: PUT
+
+Endpoint: /api/exam-sessions/{id}
+
+5. Delete Exam Session
+Method: DELETE
+
+Endpoint: /api/exam-sessions/{id}
+
+Exam Groups
+Endpoint untuk mengelompokkan siswa ke dalam sesi ujian.
+
+1. Get All Exam Groups
+Method: GET
+
+Endpoint: /api/exam-groups
+
+2. Get Exam Group by ID
+Method: GET
+
+Endpoint: /api/exam-groups/{id}
+
+3. Create Exam Group
+Method: POST
+
+Endpoint: /api/exam-groups
+
+Request Body:
+
+{
+    "exams_id": 1,
+    "exam_sessions_id": 1,
+    "students_id": 123
+}
+
+4. Update Exam Group
+Method: PUT
+
+Endpoint: /api/exam-groups/{id}
+
+5. Delete Exam Group
+Method: DELETE
+
+Endpoint: /api/exam-groups/{id}
+
+Authentication
+Student Login
+Method: POST
+
+Endpoint: /api/login
+
+Deskripsi: Endpoint untuk login siswa menggunakan NISN dan password.
+
+Request Body:
+
+{
+    "nisn": "1234567890",
+    "password": "password123"
+}
+
+Contoh Response Sukses (200 OK):
+
+{
+    "message": "success",
+    "student": {
+        "id": 1,
+        "classroom_id": 1,
+        "nisn": "1234567890",
+        "name": "John Doe",
+        "gender": "Laki-laki",
+        "created_at": "2023-11-01T00:00:00.000000Z",
+        "updated_at": "2023-11-01T00:00:00.000000Z"
+    }
+}
+
+Contoh Response Gagal (404 Not Found):
+
+{
+    "message": "nisn tidak ditemukan"
+}
+
+Contoh Response Gagal (401 Unauthorized):
+
+{
+    "message": "password gagal"
+}
